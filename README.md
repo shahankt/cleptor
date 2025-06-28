@@ -119,6 +119,7 @@ cleptor/
 
 - **Ngrok tunnel not starting:**  
   Ensure `ngrok` binary is executable and not blocked by firewall or antivirus.
+  Sometimes reloading the page or logging out and logging back in can resolve the issue.
 
 - **PHP server not running:**  
   Verify PHP is installed and accessible from the command line.
